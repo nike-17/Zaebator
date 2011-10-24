@@ -56,4 +56,4 @@ And you can add responseCallback(s) id you need to call some kind of callbacks
 		$this->_zaebator->setAuthHash($this->_result);
 	}
 
-Step 4: Have some trouble?Feel free to asq me here on github or via email mike-17@ya.ru 
+Step 4: Have some trouble?Feel free to asq me here on github or via email nike-17@ya.ru 
