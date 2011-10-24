@@ -31,7 +31,7 @@ Step 3.1: Add to Zaebator main class (library/Zaebator.php)
 		/**
 		 * @param string $param1
 		 * @param string $param2
-	......
+		 *  ......
 		 * @param string $paramn
 		 * @return string 
 		 */
