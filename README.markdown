@@ -27,45 +27,33 @@ Step 1: Just create an instance of Zaebator
 
 
 Step 3: Add your request method than you need
+
 Step 3.1: Add to Zaebator main class (library/Zaebator.php)
-			/**
-			 * @param string $param1
-			 * @param string $param2
-			 *  ......
-			 * @param string $paramn
-			 * @return string 
-			 */
-			public function yourMethod($param1, $param2, ..,$paramn) {
-				$args = func_get_args(); 
-				return $this->_executeCommand('your.method', $args);
-			}
+
+	public function yourMethod($param1, $param2, ..,$paramn) {
+		$args = func_get_args(); 
+		return $this->_executeCommand('your.method', $args);
+	}
+	
 Step 3.2: Add to Zaebator Commands  class (library/Zaebator/Commands.php)
-			/**
-			 * Zaebator commands
-			 *
-			 * @var array
-			 */
-			protected static $_commands = array(
-				'user.authenticate' => 'Zaebator_Command_User_Authenticate',
-				.....
-				'your.method' => 'Zaebator_Command_Your_Method'
-			);
+
+	protected static $_commands = array(
+		'user.authenticate' => 'Zaebator_Command_User_Authenticate',
+			.....
+		'your.method' => 'Zaebator_Command_Your_Method'
+	);
+
 Step 3.3: Add  Zaebator Command  class (library/Zaebator/Your/Method.php)
 see Zaebator_Command_User_Authenticate as example
 anyway all you need in this class add params map
-			/**
-			 *
-			 * @var array 
-			 */
-			protected $_paramsMap = array('param1', 'param2', ...,'paramn');
+		
+	protected $_paramsMap = array('param1', 'param2', ...,'paramn');
 And you can add responseCallback(s) id you need to call some kind of callbacks
-			/**
-			 * array of response callback - will be proccesed after geting response
-			 * @var array 
-			 */
-			protected $_responseCallbacks = array('_setAuthHashCallback');
+
+	protected $_responseCallbacks = array('_setAuthHashCallback');
 	
-			protected function _setAuthHashCallback() {
-				$this->_zaebator->setAuthHash($this->_result);
-			}
+	protected function _setAuthHashCallback() {
+		$this->_zaebator->setAuthHash($this->_result);
+	}
+
 Step 4: Have some trouble?Feel free to asq me here on github or via email mike-17@ya.ru 
