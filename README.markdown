@@ -4,7 +4,10 @@ ZAEBATOR - is a skeleton for this  JSON-RPC API. Right now i do only few command
 You can do it by your self or feel free to ask my (nike-17@ya.ru).
 
 ## Support Commands
-
+Right now you can:
+*  Login
+*  Get Graph Object
+*  Render Graph Image
 Sea examples folder.
 
 ## Requirements
