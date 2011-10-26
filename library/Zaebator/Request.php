@@ -37,7 +37,7 @@ class Zaebator_Request {
 	 * @return array 
 	 */
 	public function exec($data = '', $headers = array()) {
-		$c = curl_init($this->_zaebator->getOption('url'));
+		$c = curl_init($this->_zaebator->getOption('urlApi'));
 		
 		$headers[] = 'Content-Type: application/json-rpc';
 		// Well, ok this one isn't, but it's good to conform (sometimes)

@@ -2,47 +2,43 @@
 
 class Zaebator_Command_Abstract implements Zaebator_Command_Interface {
 
-	
 	/**
 	 *
 	 * @var Zaebator 
 	 */
 	protected $_zaebator;
+
 	/**
 	 *
 	 * @var string 
 	 */
 	protected $_method;
+
 	/**
 	 *
 	 * @var string 
 	 */
 	protected $_params;
-	
+
 	/**
 	 *
 	 * @var integer 
 	 */
 	protected static $_increment = 1;
 
-	/**
-	 *
-	 * @var array 
-	 */
-	protected $_paramsMap;
 
 	/**
 	 * array of response callback - will be proccesed after geting response
 	 * @var array 
 	 */
 	protected $_responseCallbacks = array();
-	
+
 	/**
 	 *
 	 * @var array 
 	 */
 	protected $_result;
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -54,22 +50,14 @@ class Zaebator_Command_Abstract implements Zaebator_Command_Interface {
 		$this->_zaebator = $zaebator;
 		$this->_method = $method;
 		$this->setParams($params);
-	
 	}
-	
+
 	/**
 	 * Set params as assoc array
 	 * @param array $params 
 	 */
 	protected function setParams($params) {
-		if ($this->_paramsMap) {
-			$values = array_values($this->_paramsMap);
-			for ($i =0; $i < count($this->_paramsMap); $i++) {
-				$this->_params[$values[$i]] = $params[$i];
-			}
-		} else {
-			$this->_params = $params;
-		}
+		$this->_params = $params;
 	}
 
 	/**
@@ -92,9 +80,8 @@ class Zaebator_Command_Abstract implements Zaebator_Command_Interface {
 			throw new Zaebator_Exception('Not authorized');
 		}
 		$requestJSONData = $this->_buildJSONRequest();
-
 		$data = Zaebator_Request::instance($this->_zaebator)->exec($requestJSONData);
-		
+
 		return $this->_getResponse($data);
 	}
 
@@ -104,20 +91,21 @@ class Zaebator_Command_Abstract implements Zaebator_Command_Interface {
 		$this->_result = $response['result'];
 		$this->_proccResponseCallbacks();
 		return $this->_result;
-		
 	}
 
 	protected function _proccResponseCallbacks() {
 		foreach ($this->_responseCallbacks as $callback) {
 			call_user_func(array($this, $callback));
 		}
+		$this->_responseCallbacks = array();
 	}
+
 	private function _updateCommandIncrement() {
 
 		self::$_increment++;
 		return self::$_increment;
 	}
-	
+
 	private function _getCommandIncrement() {
 
 		return self::$_increment;

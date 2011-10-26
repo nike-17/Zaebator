@@ -8,7 +8,9 @@ class Zaebator_Commands {
 	 * @var array
 	 */
 	protected static $_commands = array(
-		'user.authenticate' => 'Zaebator_Command_User_Authenticate'
+		'user.authenticate' => 'Zaebator_Command_User_Authenticate',
+		'graph.get' => 'Zaebator_Command_Graph_Get'
+		
 	);
 
 	/**

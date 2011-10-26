@@ -1,7 +1,11 @@
 # Zaebator - Zabbix API wrapper skeleton
 Zabbix is an enterprise-class open source distributed monitoring solution with JSON-RPC based Zabbix API.
-ZAEBATOR - is a skeleton for this  JSON-RPC API. Right now i do only user authentication - but it's no problem to implement other methods.
+ZAEBATOR - is a skeleton for this  JSON-RPC API. Right now i do only few commands - but it's no problem to implement other methods.
 You can do it by your self or feel free to ask my (nike-17@ya.ru).
+
+## Support Commands
+
+Sea examples folder.
 
 ## Requirements
 

@@ -14,10 +14,44 @@ class Zaebator extends Zaebator_Options {
 
 	public function __construct(array $options = array()) {
 		parent::__construct($options);
+		$this->_initOptions();
+	}
+
+	protected function _initOptions() {
+		if (!$this->isOptionSet('urlApi')) {
+			$this->setOption('urlApi', $this->getOption('url') . "api_jsonrpc.php");
+		}
+		
+		if (!$this->isOptionSet('urlGraph')) {
+			$this->setOption('urlGraph', $this->getOption('url') . "chart2.php");
+		}
+
+		if (!$this->isOptionSet('urlIndex')) {
+			$this->setOption('urlIndex', $this->getOption('url') . "index.php");
+		}
+	}
+
+	public function setUrlGraph($urlGraph) {
+		$this->_options['urlGraph'] = $urlGraph;
+	}
+
+	public function setUrlIndex($urlIndex) {
+		$this->_options['urlIndex'] = $urlIndex;
 	}
 
 	public function setUrl($url) {
 		$this->_options['url'] = $url;
+	}
+	
+	public function setUrlApi($url) {
+		$this->_options['urlApi'] = $url;
+	}
+
+	public function setUser($user) {
+		$this->_options['user'] = $user;
+	}
+	public function setPassword($password) {
+		$this->_options['password'] = $password;
 	}
 
 	public function getAuthHash() {
@@ -56,14 +90,14 @@ class Zaebator extends Zaebator_Options {
 	}
 
 	/**
-	 *
-	 * @param string $username
-	 * @param string $password
-	 * @return string 
+	 * @return type 
 	 */
-	public function userAuthenticate($username = null, $password = null) {
-		$args = func_get_args(); 
-		return $this->_executeCommand('user.authenticate', $args);
+	public function userAuthenticate() {
+		return $this->_executeCommand('user.authenticate');
+	}
+
+	public function graphGet($params) {
+		return $this->_executeCommand('graph.get', $params);
 	}
 
 }

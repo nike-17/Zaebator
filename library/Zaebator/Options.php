@@ -74,4 +74,13 @@ abstract class Zaebator_Options {
 		}
 	}
 
+	/**
+	 *
+	 * @param string $name
+	 * @return bool 
+	 */
+	public function isOptionSet($name) {
+		return array_key_exists($name, $this->_options);
+	}
+
 }
