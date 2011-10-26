@@ -10,7 +10,7 @@ Right now you can:
 * Get Graph Object
 * Render Graph Image
 
-Sea examples folder.
+please see examples folder.
 
 ## Requirements
 
