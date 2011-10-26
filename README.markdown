@@ -26,11 +26,13 @@ Step 1: Just create an instance of Zaebator
 	<?
 	require './library/Zaebator.php';
 	$option = array(
-		'url' => 'http://zabbixhost/zabbix/api_jsonrpc.php'
+		'url' => 'http://zabbixhost/zabbix/api_jsonrpc.php',
+		'user' => 'username', 
+		'password' => 'password'
 	);
 	$zaebator = new Zaebator($option);
 
-	$result = $zaebator->userAuthenticate('user', 'password');
+	$zaebator->userAuthenticate();
 
 
 Step 3: Add your request method than you need
