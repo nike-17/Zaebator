@@ -2,7 +2,7 @@
 
 class Zaebator_Service_Graph {
 
-	public static function getGraphImageById(Zaebator $zaebator, $graphid, $period = 3600, $width = 1200) {
+	public static function getGraphImageById(Zaebator $zaebator, $graphid, $period = 3600, $width = 1200, $height= 600) {
 		
 		$filename_cookie =  "zabbix_cookie_" . $graphid . ".txt";
 
@@ -28,7 +28,7 @@ class Zaebator_Service_Graph {
 		// &stime= the time, in PHP's time() format, from when the graph should begin
 		// &width= the width of the graph, small enough to fit on mobile devices
 
-		curl_setopt($ch, CURLOPT_URL, $zaebator->getOption('urlGraph') . "?graphid=" . $graphid . "&width=".$width."&period=" . $period);
+		curl_setopt($ch, CURLOPT_URL, $zaebator->getOption('urlGraph') . "?graphid=" . $graphid . "&width=".$width. "&height={$height}" . "&period=" . $period);
 		$output = curl_exec($ch);
 
 		// Close session

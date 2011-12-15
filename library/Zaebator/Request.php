@@ -74,7 +74,8 @@ class Zaebator_Request {
 		
 		
 		if(curl_error($c) != '') {
-			throw new Zaebator_Exception('Connection error: ' . curl_error($c));
+		
+			throw new Zaebator_Exception('Connection error: ' . curl_error($c) . '  ' . curl_errno($c));
 		}
 
 		curl_close($c);
